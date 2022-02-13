@@ -1,4 +1,4 @@
-.btn {
+.relax-btn {
   position: relative;
   display: inline-block;
   font-weight: $btn-font-weight;
@@ -9,10 +9,21 @@
   vertical-align: middle;
   background-image: none;
   border: $btn-border-width solid transparent;
-  @include button-size($btn-padding-y,  $btn-padding-x,  $btn-font-size,  $border-radius);
+  // 禁止用户选中文本
+  user-select: none;
+  @include button-size(
+    $btn-padding-y,
+    $btn-padding-x,
+    $btn-font-size,
+    $border-radius
+  );
   box-shadow: $btn-box-shadow;
   cursor: pointer;
   transition: $btn-transition;
+  &:focus,
+  &.focus {
+    outline: none;
+  }
   &.disabled,
   &[disabled] {
     cursor: not-allowed;
@@ -25,32 +36,51 @@
   }
 }
 
-.btn-lg {
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+.relax-btn-lg {
+  @include button-size(
+    $btn-padding-y-lg,
+    $btn-padding-x-lg,
+    $btn-font-size-lg,
+    $btn-border-radius-lg
+  );
 }
-.btn-sm {
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+.relax-btn-sm {
+  @include button-size(
+    $btn-padding-y-sm,
+    $btn-padding-x-sm,
+    $btn-font-size-sm,
+    $btn-border-radius-sm
+  );
 }
 
-.btn-primary {
-  @include button-style($primary, $primary, $white)
+.relax-btn-primary {
+  @include button-style($primary, $primary, $white);
 }
-.btn-danger {
-  @include button-style($danger, $danger, $white)
-}
-
-.btn-default {
-  @include button-style($white, $gray-400, $body-color, $white, $primary, $primary)
+.relax-btn-danger {
+  @include button-style($danger, $danger, $white);
 }
 
-.btn-link {
+.relax-btn-default {
+  @include button-style(
+    $white,
+    $gray-400,
+    $body-color,
+    $white,
+    $primary,
+    $primary
+  );
+}
+
+.relax-btn-link {
   font-weight: $font-weight-normal;
   color: $btn-link-color;
   text-decoration: $link-decoration;
   box-shadow: none;
-  &:hover {
+  &:hover,
+  &:not([href]),
+  &:not([href]):hover {
     color: $btn-link-hover-color;
-    text-decoration: $link-hover-decoration; 
+    text-decoration: $link-hover-decoration;
   }
   &:focus,
   &.focus {
@@ -59,6 +89,7 @@
   }
   &.disabled {
     color: $btn-link-disabled-color;
-    pointer-events: none;
+    // 不接收鼠标事件，设置这个cursor会失效
+    // pointer-events: none;
   }
 }

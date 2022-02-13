@@ -1,0 +1,124 @@
+.relax-menu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 30px;
+  border-bottom: $menu-border-width solid $menu-border-color;
+  box-shadow: $menu-box-shadow;
+  >.relax-menu-item {
+    padding: $menu-item-padding-y $menu-item-padding-x;
+    cursor: pointer;
+    transition: $menu-transition;
+    // 禁止用户选中文本
+    user-select: none;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+    &.disabled {
+      color: $menu-item-disabled-color;
+      // pointer-events: none;
+      cursor: not-allowed;
+      &:hover {
+        color: $menu-item-disabled-color;
+        border-bottom: $menu-item-active-border-width solid transparent;
+      }
+    }
+    &.active,
+    &:hover {
+      * {
+        color: $menu-item-active-color;
+      }
+      color: $menu-item-active-color;
+      border-bottom: $menu-item-active-border-width solid
+        $menu-item-active-color;
+    }
+  }
+  .relax-submenu-item {
+    position: relative;
+  }
+  .relax-submenu {
+    display: none;
+    list-style: none;
+    padding-left: 0;
+    white-space: nowrap;
+    transition: $menu-transition;
+    .relax-menu-item {
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      cursor: pointer;
+      transition: $menu-transition;
+      color: $body-color;
+      &.active, &:hover {
+        color: $menu-item-active-color;
+        background-color: #e6f7ff;
+      }
+    }
+  }
+  .relax-submenu.menu-opened {
+    display: block;
+  }
+}
+
+.relax-menu-horizontal {
+  >.relax-menu-item {
+    margin: 0 3px;
+    border-bottom: $menu-item-active-border-width solid transparent;
+  }
+  .relax-submenu {
+    position: absolute;
+    background: $white;
+    z-index: 100;
+    top: calc(100% + 6px);
+    left: 0;
+    border: $menu-border-width solid $menu-border-color;
+    box-shadow: $submenu-box-shadow;
+    .relax-menu-item {
+      margin: 3px 0;
+    }
+  }
+}
+
+.relax-menu-vertical {
+  flex-direction: column;
+  border-bottom: 0px;
+  border-right: $menu-border-width solid $menu-border-color;
+
+  // 测试用
+  margin: 10px 20px;
+
+  >.relax-menu-item {
+    margin: 3px 0;
+    &:not(.relax-submenu-item) {
+      border-left: $menu-item-active-border-width solid transparent;
+    }
+    &:hover,
+    &.active {
+      border-bottom: 0px;
+    }
+    &:not(.relax-submenu-item).active,
+    &:not(.relax-submenu-item):hover {
+      border-left: $menu-item-active-border-width solid $menu-item-active-color;
+    }
+    &.relax-submenu-item {
+      padding: 0;
+      .relax-menu-item {
+        margin: 3px 0;
+      }
+      .submenu-title {
+        padding: $menu-item-padding-y $menu-item-padding-x;
+        border-left: $menu-item-active-border-width solid transparent;
+      }
+      &:hover,
+      &.active {
+        .submenu-title {
+          border-left: $menu-item-active-border-width solid $menu-item-active-color;
+        }
+      }
+    }
+  }
+
+  .relax-submenu {
+    margin-left: 15px;
+  }
+}
