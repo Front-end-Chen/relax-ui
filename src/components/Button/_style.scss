@@ -19,7 +19,7 @@
   );
   box-shadow: $btn-box-shadow;
   cursor: pointer;
-  transition: $btn-transition;
+  // transition: $btn-transition;
   &:focus,
   &.focus {
     outline: none;

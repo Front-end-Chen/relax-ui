@@ -39,11 +39,12 @@
     position: relative;
   }
   .relax-submenu {
-    display: none;
+    // display: none;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
-    transition: $menu-transition;
+    //注意多个transition冲突
+    // transition: $menu-transition;
     .relax-menu-item {
       padding: $menu-item-padding-y $menu-item-padding-x;
       cursor: pointer;
@@ -56,7 +57,7 @@
     }
   }
   .relax-submenu.menu-opened {
-    display: block;
+    // display: block;
   }
 }
 
@@ -64,6 +65,21 @@
   >.relax-menu-item {
     margin: 0 3px;
     border-bottom: $menu-item-active-border-width solid transparent;
+    &.relax-submenu-item {
+      .submenu-title {
+        display: flex;
+        align-items: center;
+        .arrow-icon {
+          margin-left: 8px;
+          transition: transform .28s ease-in-out;
+        }
+      }
+      &:hover {
+        .arrow-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
   }
   .relax-submenu {
     position: absolute;
@@ -83,10 +99,8 @@
   flex-direction: column;
   border-bottom: 0px;
   border-right: $menu-border-width solid $menu-border-color;
-
   // 测试用
-  margin: 10px 20px;
-
+  // margin: 10px 20px;
   >.relax-menu-item {
     margin: 3px 0;
     &:not(.relax-submenu-item) {
@@ -106,13 +120,24 @@
         margin: 3px 0;
       }
       .submenu-title {
+        display: flex;
+        align-items: center;
         padding: $menu-item-padding-y $menu-item-padding-x;
         border-left: $menu-item-active-border-width solid transparent;
+        .arrow-icon {
+          margin-left: 8px;
+          transition: transform .28s ease-in-out;
+        }
       }
       &:hover,
       &.active {
         .submenu-title {
           border-left: $menu-item-active-border-width solid $menu-item-active-color;
+        }
+      }
+      &.opened {
+        .arrow-icon {
+          transform: rotate(180deg);
         }
       }
     }

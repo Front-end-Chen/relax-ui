@@ -5,7 +5,7 @@ import { MenuItemProps } from './menuItem';
 // 声明menu显示方向的类型
 type MenuMode = "horizontal" | "vertical";
 
-// 声明可配置的MenuProps基本类型（可配置项）
+// 声明可配置的MenuProps基本类型
 // 为了使下拉菜单的选项能点击选择，将defaultIndex改为string类型
 export type MenuProps = {
   defaultIndex?: string;

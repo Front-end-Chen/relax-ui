@@ -1,5 +1,7 @@
 import classNames from 'classnames'
 import React, { MouseEvent, MouseEventHandler, useContext, useState } from 'react'
+import Icon from '../Icon/icon';
+import Transition from '../Transition/transition';
 import { activeContext } from './menu'
 import { MenuItemProps } from './menuItem';
 
@@ -25,7 +27,8 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(isOpend)
 
   const classes = classNames("relax-menu-item relax-submenu-item", className , {
-    "active": context.index!.split("-")[0] === index
+    "active": context.index!.split("-")[0] === index,
+    "opened": menuOpen
   })
 
   // vertical方向点击菜单展开响应函数
@@ -39,7 +42,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
     clearTimeout(timer)
     timer = setTimeout(() => {
       setMenuOpen(toggle)
-    }, 200);
+    }, 260);
   }
 
   const clickEvents = context.mode === 'vertical' ? {
@@ -72,10 +75,16 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
       }
     })
 
-    return (
-      <ul className={classes}>
-        {childrenElement}
-      </ul>
+    return (   
+      <Transition
+        in={menuOpen}
+        animation="zoom-in-top"
+        timeout={300}
+      >
+        <ul className={classes}>
+          {childrenElement}
+        </ul>
+      </Transition>
     )
   }
 
@@ -83,6 +92,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
     <li className={classes} {...hoverEvents}>
       <div className="submenu-title" {...clickEvents}>
         {title}
+        <Icon icon="angle-down" className="arrow-icon" />
       </div>
       {renderChildren()}
     </li>
