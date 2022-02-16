@@ -10,7 +10,7 @@ type ButtonSize = "lg" | "sm";
 type ButtonType = "primary" | "default" | "danger" | "link";
 
 // 声明ButtonProps的基本类型（可配置项）
-type BaseButtonProps = {
+interface BaseButtonProps {
   size: ButtonSize;
   btnType: ButtonType;
   // 以下属性react已声明，也可覆盖
@@ -19,7 +19,7 @@ type BaseButtonProps = {
   disabled: boolean;
   href: string;
   onClick: MouseEventHandler<HTMLElement>;
-};
+}
 
 // 声明兼容元素原生属性的泛型类型。
 // 注意：此处有button与a元素2种结合

@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import React, { useContext, MouseEventHandler } from 'react'
 import { activeContext } from './menu'
 
-export type MenuItemProps = {
+export interface MenuItemProps {
   index?: string;
   disabled?: boolean;
   style?: React.CSSProperties;
