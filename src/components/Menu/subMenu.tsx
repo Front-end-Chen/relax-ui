@@ -5,7 +5,7 @@ import Transition from '../Transition/transition';
 import { activeContext } from './menu'
 import { MenuItemProps } from './menuItem';
 
-export interface SubMenuProps {
+export type SubMenuProps = {
   index?: string;
   title: string;
   className?: string;

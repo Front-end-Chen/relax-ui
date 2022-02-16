@@ -7,11 +7,13 @@ import { CSSTransitionProps } from 'react-transition-group/CSSTransition'
 type animations = 'zoom-in-top' | 'zoom-in-left' | 'zoom-in-bottom' | 'zoom-in-right';
 
 // 声明可配置的TransitionProps基本类型
-type TransitionProps = CSSTransitionProps & {
+type TransitionAnimationsProps = {
   animation?: animations;
   // 是否添加div包裹
   wrapper? : boolean;
 };
+
+type TransitionProps = TransitionAnimationsProps & CSSTransitionProps
 
 const Transition: React.FC<TransitionProps> = props => {
   const {

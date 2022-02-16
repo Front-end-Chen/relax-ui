@@ -7,22 +7,22 @@ type MenuMode = "horizontal" | "vertical";
 
 // 声明可配置的MenuProps基本类型
 // 为了使下拉菜单的选项能点击选择，将defaultIndex改为string类型
-export interface MenuProps {
+export type MenuProps = {
   defaultIndex?: string;
   mode?: MenuMode;
   style?: React.CSSProperties;
   onSelect?: (selectedIndex: string) => void;
   className?: string;
   defaultOpenSubMenus?: string[];
-}
+};
 
 // activeContext的类型
-interface active {
+type active = {
   index?: string;
   onSelect?: (selectedIndex: string) => void;
   mode?: MenuMode;
   defaultOpenSubMenus?: string[];
-}
+};
 
 // 创建context传递activeIndex，onSelect，mode，defaultOpenSubMenus
 export const activeContext = createContext<active>({index: '0'});
