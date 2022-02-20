@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react'
-import Button, { ButtonProps } from './button'
+import { Button, ButtonProps } from './button'
 const defaultProps = {
   //设置虚拟的点击事件响应函数
   onClick: jest.fn()

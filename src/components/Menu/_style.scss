@@ -71,7 +71,7 @@
         align-items: center;
         .arrow-icon {
           margin-left: 8px;
-          transition: transform .28s ease-in-out;
+          transition: transform .3s ease-in-out;
         }
       }
       &:hover {
@@ -90,6 +90,7 @@
     border: $menu-border-width solid $menu-border-color;
     box-shadow: $submenu-box-shadow;
     .relax-menu-item {
+      padding: $menu-item-padding-y $menu-item-padding-x+0.5;
       margin: 3px 0;
     }
   }
@@ -126,7 +127,7 @@
         border-left: $menu-item-active-border-width solid transparent;
         .arrow-icon {
           margin-left: 8px;
-          transition: transform .28s ease-in-out;
+          transition: transform .3s ease-in-out;
         }
       }
       &:hover,

@@ -13,10 +13,14 @@ interface DataSourceObject {
 // 可自定义传入数据源类型
 export type DataSourceType<T = {}> = T & DataSourceObject;
 
-interface AutoCompleteProps extends Omit<InputProps, "onSelect"> {
+export interface AutoCompleteProps extends Omit<InputProps, "onSelect"> {
+  // 设置输入框默认值
   value?: string;
+  // 加载推荐列表的函数
   onSuggest: (str: string) => DataSourceType[] | Promise<DataSourceType[]>;
+  // 每条推荐内容的选择函数
   onSelect?: (item: DataSourceType) => void;
+  // 自定义加载每条推荐内容的函数
   renderOption?: (item: DataSourceType) => ReactElement;
 }
 
@@ -51,7 +55,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
 
   // 使用useEffect包裹副作用
   useEffect(() => {
-    console.log(debouncedValue);
+    // console.log(debouncedValue);
     if (debouncedValue && triggerSuggest) {
       setSuggestion([]);
       const result = onSuggest(debouncedValue);
@@ -83,6 +87,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
     setHighlightIndex(index)
   }
 
+  // 键盘上下选择每条推荐内容回调
   const handleKeydown = (e: KeyboardEvent<HTMLInputElement>) => {
     // keycode已经被弃用，请使用key！
     // console.log(e.key);
@@ -104,12 +109,14 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
     }
   };
 
+  // 输入框内容改变回调
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim();
     setInputValue(value);
     setTriggerSuggest(true);
   };
 
+  // 每条推荐内容的选择回调
   const handleSelect = (item: DataSourceType) => {
     setInputValue(item.value);
     setSuggestion([]);
