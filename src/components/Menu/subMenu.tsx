@@ -1,25 +1,35 @@
 import classNames from 'classnames'
-import React, { MouseEvent, MouseEventHandler, useContext, useState } from 'react'
-import Icon from '../Icon/icon';
-import Transition from '../Transition/transition';
+import React, { MouseEvent, useContext, useState } from 'react'
+import { Icon } from '../Icon/icon';
+import { Transition } from '../Transition/transition';
 import { activeContext } from './menu'
 import { MenuItemProps } from './menuItem';
 
 export interface SubMenuProps {
   index?: string;
+  /**submenu标题*/
   title: string;
+  /**自定义submenu外层wrapper元素的样式*/
   className?: string;
   children?: React.ReactNode,
 }
 
-const SubMenu: React.FC<SubMenuProps> = (props) => {
-  const {
-    index,
-    title,
-    children,
-    className
-  } = props
-  
+/**
+ * 二级菜单
+ *
+ * ### 引用方法
+ *
+ * ```ts
+ * import { Menu.SubMenu } from 'relax-ui'
+ * ```
+ */
+export const SubMenu: React.FC<SubMenuProps> = ({
+  index,
+  title,
+  children,
+  className
+}) => {
+
   const context = useContext(activeContext)
   // 实现默认打开二级菜单
   const isOpend = (index && context.mode === "vertical") ? context.defaultOpenSubMenus!.includes(index) : false
@@ -32,7 +42,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   })
 
   // vertical方向点击菜单展开响应函数
-  const handleClick: MouseEventHandler<HTMLDivElement> = () => {
+  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     setMenuOpen(!menuOpen)
   }
 
@@ -102,5 +112,4 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
 }
 
 // 使用displayName保存组件名，获取时通过断言为React.FunctionComponentElement，再通过.type.displayName获取
-SubMenu.displayName = 'SubMenu'
-export default SubMenu;
+SubMenu.displayName = 'SubMenu';

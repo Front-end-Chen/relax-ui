@@ -1,0 +1,39 @@
+.alert {
+  position: relative;
+  padding: $alert-padding-y $alert-padding-x;
+  margin-bottom: $alert-margin-1;
+  border: $alert-border-width solid transparent;
+  border-radius: $alert-border-radius;
+  // 禁止用户选中文本
+  user-select: none;
+  &.closed{
+    display: none;
+  }
+}
+.alert-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: $alert-close-padding-y $alert-close-padding-x;
+  color: inherit;
+  cursor: pointer;
+}
+.alert-bold {
+  font-weight: 700;
+}
+.alert-desc {
+  font-size: $font-size-sm;
+  margin: .3rem 0 0 0;
+}
+.alert-default {
+  @include alert-style($white, $primary, $primary);
+}
+.alert-danger {
+  @include alert-style($white, $danger, $danger);
+}
+.alert-success {
+  @include alert-style($white, $success, $success);
+}
+.alert-warning {
+  @include alert-style($white, $warning, $warning);
+}

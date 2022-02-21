@@ -2,9 +2,9 @@ import classNames from 'classnames';
 import React, { ChangeEvent, KeyboardEvent, ReactElement, useEffect, useRef, useState } from "react";
 import useClickOutside from '../../hooks/useClickOutside';
 import useDebounce from '../../hooks/useDebounce';
-import Icon from '../Icon/icon';
-import Input, { InputProps } from "../Input/input";
-import Transition from '../Transition/transition';
+import { Icon } from '../Icon/icon';
+import { Input, InputProps } from "../Input/input";
+import { Transition } from '../Transition/transition';
 
 // 数据源基本类型
 interface DataSourceObject {
@@ -14,23 +14,35 @@ interface DataSourceObject {
 export type DataSourceType<T = {}> = T & DataSourceObject;
 
 export interface AutoCompleteProps extends Omit<InputProps, "onSelect"> {
-  // 设置输入框默认值
+  /**设置输入框默认值*/
   value?: string;
-  // 加载推荐列表的函数
+  /**加载推荐列表的函数*/
   onSuggest: (str: string) => DataSourceType[] | Promise<DataSourceType[]>;
-  // 每条推荐内容的选择函数
+  /**每条推荐内容的选择函数*/
   onSelect?: (item: DataSourceType) => void;
-  // 自定义加载每条推荐内容的函数
+  /**自定义加载每条推荐内容的函数*/
   renderOption?: (item: DataSourceType) => ReactElement;
 }
 
-const AutoComplete: React.FC<AutoCompleteProps> = ({
+/**
+ * 输入框自动完成组件
+ * 
+ * ### 引用方法
+ * 
+ * ```ts
+ * import { AutoComplete } from 'relax-ui'
+ * ```
+ * 
+ * **支持原生 Input 的所有基本属性**
+ */
+export const AutoComplete: React.FC<AutoCompleteProps> = ({
   value="",
   onSuggest,
   onSelect,
   renderOption,
   ...restProps
 }) => {
+
   // 输入框的值
   const [inputValue, setInputValue] = useState<string>(value);
   // 推荐列表数据的数组，同时可设置是否显示推荐列表
@@ -164,7 +176,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
 
   return (
     <div className="relax-auto-complete" ref={AutoCompleteWrapperRef}>
-      <Input 
+      <Input
         value={inputValue}
         onChange={handleChange}
         onKeyDown={handleKeydown}
@@ -178,5 +190,3 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
     </div>
   );
 };
-
-export default AutoComplete;

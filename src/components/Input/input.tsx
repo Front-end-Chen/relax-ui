@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, InputHTMLAttributes } from 'react'
+import React, { ChangeEvent, ChangeEventHandler, InputHTMLAttributes } from 'react'
 // import { IconProp } from '@fortawesome/fontawesome-svg-core';
 // import Icon from '../Icon/icon';
 import classNames from 'classnames';
@@ -8,22 +8,41 @@ type InputSize = 'lg' | 'sm'
 
 // IconProp为所有fortawesome的icon类型的字面量
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  /**禁用Input*/
   disabled?: boolean;
+  /**Input大小*/
   inputSize?: InputSize;
-  icon?: React.ReactElement; 
+  /**添加图标，在右侧悬浮添加一个图标，用于提示*/
+  icon?: React.ReactElement;
+  /**添加前缀，用于配置一些固定组合*/
   prepend?: string | React.ReactElement;
+  /**添加后缀，用于配置一些固定组合*/
   append?: string | React.ReactElement;
+  /**自定义Input外层wrapper的行内样式*/
   style?: React.CSSProperties;
-  onChange?: ChangeEventHandler<HTMLInputElement>
+  /**输入框change事件*/
+  onChange?: (e: ChangeEvent<HTMLInputElement>)=>void
 }
 
-const Input: React.FC<InputProps> = ({
+/**
+ * 输入框组件
+ * 
+ * ### 引用方法
+ * 
+ * ~~~ts
+ * import { Input } from 'relax-ui'
+ * ~~~
+ * 
+ * **支持原生 Input 的所有基本属性**
+ */
+export const Input: React.FC<InputProps> = ({
   disabled,
   inputSize,
   icon,
   prepend,
   append,
   style,
+  children,
   ...restProps
 }) => {
 
@@ -46,8 +65,7 @@ const Input: React.FC<InputProps> = ({
         {...restProps}
         />
       {append && <div className="relax-input-group-append">{append}</div>}
+      {children}
     </div>
   )
 }
-
-export default Input;

@@ -1,17 +1,15 @@
 import { ChangeEvent, MouseEvent, useState } from "react";
 import axios from "axios";
-import AutoComplete, {
-  DataSourceType,
-} from "./components/AutoComplete/autoComplete";
-import {Button} from "./components/Button/button";
-import Icon from "./components/Icon/icon";
-import Input from "./components/Input/input";
-import Menu from "./components/Menu/menu";
-import MenuItem from "./components/Menu/menuItem";
-import SubMenu from "./components/Menu/subMenu";
-import Transition from "./components/Transition/transition";
+import { AutoComplete, DataSourceType } from "./components/AutoComplete/autoComplete";
+import { Button } from "./components/Button/button";
+import { Icon } from "./components/Icon/icon";
+import { Input } from "./components/Input/input";
+import { Menu } from "./components/Menu/menu";
+import { MenuItem } from "./components/Menu/menuItem";
+import { SubMenu } from "./components/Menu/subMenu";
+import { Transition } from "./components/Transition/transition";
 // import request from './util/request';
-import Upload, { UploadFile } from './components/Upload/upload';
+import { Upload, UploadFile } from './components/Upload/upload';
 
 interface LakerPlayerProps {
   value: string;
@@ -60,25 +58,25 @@ function App() {
       });
   };
 
-  // const renderOption = (item: DataSourceType) => {
-  //   // const itemWithlakers= item as DataSourceType<LakerPlayerProps>
-  //   const itemWithGithub = item as DataSourceType<GithubUserProps>
-  //   return (
-  //     // <>
-  //     //   <h2>Name: {itemWithlakers.value}</h2>
-  //     //   <p>number: {itemWithlakers.number}</p>
-  //     // </>
-  //     <>
-  //      <h2>Name: {itemWithGithub.login}</h2>
-  //      <p>url: {itemWithGithub.url}</p>
-  //     </>
-  //     // 这样写的话，item要写any
-  //     // <>
-  //     //   <h2>Name: {item.login}</h2>
-  //     //   <p>url: {item.url}</p>
-  //     // </>
-  //   )
-  // }
+  const renderOption = (item: DataSourceType) => {
+    // const itemWithlakers= item as DataSourceType<LakerPlayerProps>
+    const itemWithGithub = item as DataSourceType<GithubUserProps>
+    return (
+      // <>
+      //   <h2>Name: {itemWithlakers.value}</h2>
+      //   <p>number: {itemWithlakers.number}</p>
+      // </>
+      <>
+       <h2>Name: {itemWithGithub.login}</h2>
+       <p>url: {itemWithGithub.url}</p>
+      </>
+      // 这样写的话，item要写any
+      // <>
+      //   <h2>Name: {item.login}</h2>
+      //   <p>url: {item.url}</p>
+      // </>
+    )
+  }
 
   // 单文件上传
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -249,7 +247,7 @@ function App() {
       <hr />
       <hr />
       <hr />
-      <Menu defaultIndex="0" onSelect={si => {}}>
+      <Menu defaultIndex="0" onSelect={() => {}}>
         <MenuItem>aaa</MenuItem>
         <SubMenu title="ddd">
           <MenuItem>eee</MenuItem>

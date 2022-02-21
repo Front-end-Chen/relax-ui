@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/extend-expect'
 import axios from 'axios'
 import { render, RenderResult, fireEvent, waitFor, createEvent } from '@testing-library/react'
 
-import Upload, { UploadProps } from './upload'
+import { Upload, UploadProps } from './upload'
 
 jest.mock('../Icon/icon', () => {
   return ({icon, onClick}: any) => {

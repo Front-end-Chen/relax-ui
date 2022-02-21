@@ -1,0 +1,50 @@
+.tabs {
+  // 禁止用户选中文本
+  user-select: none;
+  .tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    border-bottom: $tabs-nav-border-width solid $tabs-nav-border-color;
+    .tabs-nav-item {
+      display: block;
+      padding: $tabs-nav-item-padding-y $tabs-nav-item-padding-x;
+      cursor: pointer;
+      &.active, 
+      &:hover {
+        color: $tabs-nav-item-active-color;
+      }
+      &.disabled {
+        color: $tabs-nav-item-disabled-color;
+        pointer-events: none;
+        cursor: default;
+        background-color: $tabs-nav-item-disabled-background-color;
+        border-color: $tabs-nav-item-disabled-border-color;
+      }
+    }
+  }
+  .tabs-content {
+    margin-top: $tabs-content-margin-bottom;
+  }
+  &.tabs-line {
+    .tabs-nav-item {
+      &.active {
+        border-bottom: $tabs-line-nav-item-active-border-width solid $tabs-nav-item-active-color;
+      }
+    }
+  }
+  &.tabs-card {
+    .tabs-nav-item {
+      border: $tabs-card-nav-item-border-width solid $tabs-card-nav-item-border-color;
+      margin-bottom: $tabs-card-nav-item-margin-bottom;
+      &.active {
+        border-top-left-radius: $tabs-card-nav-item-active-border-radius;
+        border-top-right-radius: $tabs-card-nav-item-active-border-radius;
+        background-color: $tabs-card-nav-item-active-background-colro;
+        border-color: $tabs-card-nav-item-active-border-color;
+      }
+    }
+  }
+}

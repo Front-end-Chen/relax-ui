@@ -76,3 +76,13 @@
   border-top-left-radius: $raduis;
   border-bottom-left-radius: $raduis;
 }
+
+@mixin alert-style(
+  $color,
+  $background,
+  $border
+) {
+  color: $color;
+  background: $background;
+  border-color: darken($border, 7.5%);
+}

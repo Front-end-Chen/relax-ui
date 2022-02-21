@@ -8,60 +8,70 @@ export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error'
 
 // 声明上传文件的状态对象的类型，用于UI显示
 export interface UploadFile {
-  // 文件唯一的标识
+  /**文件唯一的标识*/
   uid: string;
-  // 上传的文件大小
+  /**上传的文件大小*/
   size: number;
-  // 上传的文件名
+  /**上传的文件名*/
   name: string;
-  // 文件状态的标识
+  /**文件状态的标识*/
   status?: UploadFileStatus;
-  // 上传进度百分比
+  /**上传进度百分比*/
   percent?: number;
-  // 文件原生的File对象
+  /**文件原生的File对象*/
   originFile?: File;
-  // 文件上传成功返回的数据
+  /**文件上传成功返回的数据*/
   response?: any;
-  // 文件上传失败返回的错误信息
+  /**文件上传失败返回的错误信息*/
   error?: any;
 }
 
+
 export interface UploadProps {
-  // 上传文件请求的url
+  /**上传文件请求的url*/
   action: string;
-  // 设置初始化的UploadFileList
+  /**设置初始化的UploadFileList*/
   defaultFileList?: UploadFile[];
-  // 文件上传进度条的回调
+  /**文件上传进度条的回调*/
   onProgress?: (percentage: number, file: UploadFile) => void;
-  // 文件上传成功的回调
+  /**文件上传成功的回调*/
   onSuccess?: (data: any, file: UploadFile) => void;
-  // 文件上传出错的回调
+  /**文件上传出错的回调*/
   onError?: (error: any, file: UploadFile) => void;
-  // 文件上传之前的回调
+  /**文件上传之前的回调*/
   onBeforeUpload?: (file: File) => boolean | Promise<File>;
-  // 删除UploadFileList中的UploadFile的回调
+  /**删除UploadFileList中的UploadFile的回调*/
   onChange?: (file: UploadFile) => void;
-  // 删除UploadFileList中的UploadFile的回调
+  /**删除UploadFileList中的UploadFile的回调*/
   onRemove?: (removeFile: UploadFile) => void;
-  // 点击文件列表的文件名触发的回调
+  /**点击文件列表的文件名触发的回调*/
   onPreview?: (clickFile: UploadFile) => void;
-  // 添加额外的请求头
+  /**添加额外的请求头*/
   headers?: {[key: string]: any };
-  // 提交文件数据在FormData中对应的key，用于后端根据key获取file
+  /**提交文件数据在FormData中对应的key，用于后端根据key获取file*/
   formDataKey?: string;
-  // 添加额外的文件数据到FormData中
+  /**添加额外的文件数据到FormData中*/
   extraFormData?: {[key: string]: any };
-  // 是否携带cookie
+  /**是否携带cookie*/
   withCredentials?: boolean;
-  // 设置允许上传的文件格式
+  /**设置允许上传的文件格式*/
   accept?: string;
-  // 是否开启多文件上传
+  /**是否开启多文件上传*/
   multiple?: boolean;
-  // 是否开启拖拽上传
+  /**是否开启拖拽上传*/
   drag?: boolean;
 }
 
-const Upload: React.FC<UploadProps> = ({
+/**
+ * 文件上传组件
+ * 
+ * ### 引用方法
+ * 
+ * ```ts
+ * import { Upload } from 'relax-ui'
+ * ```
+ */
+export const Upload: React.FC<UploadProps> = ({
   action,
   defaultFileList=[],
   onSuccess,
@@ -247,5 +257,3 @@ const Upload: React.FC<UploadProps> = ({
     </div>
   );
 };
-
-export default Upload;

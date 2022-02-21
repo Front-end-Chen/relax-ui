@@ -1,5 +1,7 @@
 @each $key, $val in $theme-colors {
   .icon-#{$key} {
+    // 禁止用户选中文本
+    user-select: none;
     color: $val;
   }
 }

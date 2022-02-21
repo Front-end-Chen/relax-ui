@@ -3,6 +3,8 @@
   width: 100%;
   margin-bottom: 10px;
   position: relative;
+  // 禁止用户选中文本
+  user-select: none;
   .icon-wrapper {
     position: absolute;
     height: 100%;

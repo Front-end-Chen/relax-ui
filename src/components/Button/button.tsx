@@ -34,7 +34,7 @@ type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>;
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
 /**
- * 按钮元素
+ * 按钮组件
  * 
  * ### 引用方法
  *

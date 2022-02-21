@@ -2,14 +2,28 @@ import React, { FC } from 'react'
 import { IconTheme } from '../Icon/icon'
 
 export interface ProgressProps {
+  /**进度百分比*/
   percent: number;
+  /**进度条高度*/
   strokeHeight?: number;
+  /**是否显示进度数字*/
   showText?: boolean;
+  /**自定义进度外层wrapper的内联样式*/
   styles?: React.CSSProperties;
+  /**设置进度条的主题*/
   theme?: IconTheme;
 }
 
-const Progress: FC<ProgressProps> = (props) => {
+/**
+ * 文件上传组件
+ * 
+ * ### 引用方法
+ * 
+ * ```ts
+ * import { Progress } from 'relax-ui'
+ * ```
+ */
+export const Progress: FC<ProgressProps> = (props) => {
   const {
     percent,
     strokeHeight=15,
@@ -31,5 +45,3 @@ const Progress: FC<ProgressProps> = (props) => {
     </div>
   )
 }
-
-export default Progress;

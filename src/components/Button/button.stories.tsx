@@ -84,14 +84,14 @@ export const ButtonDisabled: ComponentStory<typeof Button> = () => {
 
 ButtonDisabled.storyName = "禁用Button";
 
-export const ButtonEvent: ComponentStory<typeof Button> = () => {
+export const ButtonClickEvent: ComponentStory<typeof Button> = () => {
   return (
     <>
       <Button
-        onClick={action("clicked")}
-        // onClick={() => {
-        //     alert("点击触发alert");
-        // }}
+        // onClick={action("clicked")}
+        onClick={() => {
+            alert("点击触发alert");
+        }}
       >
         点击触发alert
       </Button>
@@ -109,4 +109,4 @@ export const ButtonEvent: ComponentStory<typeof Button> = () => {
   );
 };
 
-ButtonEvent.storyName = "Button点击事件";
+ButtonClickEvent.storyName = "Button点击事件";
