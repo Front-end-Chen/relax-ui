@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ChangeEventHandler, InputHTMLAttributes } from 'react'
+import React, { ChangeEvent, InputHTMLAttributes } from 'react'
 // import { IconProp } from '@fortawesome/fontawesome-svg-core';
 // import Icon from '../Icon/icon';
 import classNames from 'classnames';

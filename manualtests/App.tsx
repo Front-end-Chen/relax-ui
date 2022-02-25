@@ -1,15 +1,15 @@
 import { ChangeEvent, MouseEvent, useState } from "react";
 import axios from "axios";
-import { AutoComplete, DataSourceType } from "./components/AutoComplete/autoComplete";
-import { Button } from "./components/Button/button";
-import { Icon } from "./components/Icon/icon";
-import { Input } from "./components/Input/input";
-import { Menu } from "./components/Menu/menu";
-import { MenuItem } from "./components/Menu/menuItem";
-import { SubMenu } from "./components/Menu/subMenu";
-import { Transition } from "./components/Transition/transition";
+import { AutoComplete, DataSourceType } from "../src/components/AutoComplete/autoComplete";
+import { Button } from "../src/components/Button/button";
+import { Icon } from "../src/components/Icon/icon";
+import { Input } from "../src/components/Input/input";
+import { Menu } from "../src/components/Menu/menu";
+import { MenuItem } from "../src/components/Menu/menuItem";
+import { SubMenu } from "../src/components/Menu/subMenu";
+import { Transition } from "../src/components/Transition/transition";
 // import request from './util/request';
-import { Upload, UploadFile } from './components/Upload/upload';
+import { Upload, UploadFile } from '../src/components/Upload/upload';
 
 interface LakerPlayerProps {
   value: string;

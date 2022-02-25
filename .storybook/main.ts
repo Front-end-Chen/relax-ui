@@ -2,7 +2,7 @@ module.exports = {
   "stories": [
     "../src/styles/index.scss",  //引入全局样式文件
     "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)"
+    "../src/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   "addons": [
     "@storybook/addon-links",
